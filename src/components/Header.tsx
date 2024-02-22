@@ -10,7 +10,6 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import {SportsBar} from "@mui/icons-material";
 
 const pages = ['Home', 'Products'];
 
@@ -27,7 +26,6 @@ export default function Header() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <SportsBar sx={{display: {xs: 'none', md: 'flex'}, mr: 1}}/>
                     <Typography
                         variant="h6"
                         noWrap
@@ -42,9 +40,11 @@ export default function Header() {
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
+                            alignItems: 'center',
                         }}
                     >
-                        VIT
+                        <Avatar sx={{display: {xs: 'none', md: 'flex'}}} alt="V" src="/vite.svg"/>
+                        IT
                     </Typography>
 
                     <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
@@ -83,12 +83,11 @@ export default function Header() {
                             ))}
                         </Menu>
                     </Box>
-                    <SportsBar sx={{display: {xs: 'flex', md: 'none'}, mr: 1}}/>
                     <Typography
                         variant="h5"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        href="#"
                         sx={{
                             mr: 2,
                             display: {xs: 'flex', md: 'none'},
@@ -98,9 +97,11 @@ export default function Header() {
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
+                            alignItems: 'center',
                         }}
                     >
-                        VIT
+                        <Avatar sx={{display: {xs: 'flex', md: 'none'}}} alt="V" src="/vite.svg"/>
+                        IT
                     </Typography>
                     <Box sx={{flexGrow: 0, display: {xs: 'none', md: 'flex'}}}>
                         {pages.map((page) => (
@@ -114,8 +115,8 @@ export default function Header() {
                         ))}
                     </Box>
 
-                    <Box sx={{flexGrow: 0, ml: 5}}>
-                        <Avatar alt="VIT" src="/src/assets/react.svg"/>
+                    <Box sx={{ml: 5}}>
+                        <Avatar alt="VIT" src="/react.svg"/>
                     </Box>
                 </Toolbar>
             </Container>
