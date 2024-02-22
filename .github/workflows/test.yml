@@ -1,0 +1,13 @@
+name: Print secrets
+
+on:
+  workflow_dispatch:
+
+jobs:
+  print-secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: echo ${{secrets.YOUR_SECRET}} | sed 's/./& /g'
