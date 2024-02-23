@@ -1,11 +1,25 @@
-import {useState} from 'react'
-import Button from "@mui/material/Button";
 import Header from "./components/Header";
 import {Grid} from "@mui/material";
+import {Outlet, Route, Routes} from "react-router-dom";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Error from "./pages/Error";
 
 export default function App() {
-    const [count, setCount] = useState(0)
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path="products" element={<Products/>}/>
+                    <Route path="*" element={<Error/>}/>
+                </Route>
+            </Routes>
+        </>
+    )
+}
 
+function Layout() {
     return (
         <>
             <Header/>
@@ -15,14 +29,10 @@ export default function App() {
                 direction="column"
                 alignItems="center"
                 justifyContent="center"
-                sx={{ minHeight: '10vh' }}
+                sx={{minHeight: '10vh'}}
             >
-                <Button
-                    variant="contained"
-                    onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </Button>
+                <Outlet/>
             </Grid>
         </>
-    )
+    );
 }

@@ -10,8 +10,9 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
+import {Link} from "react-router-dom";
 
-const pages = ['Home', 'Products'];
+const pages = [{page: 'Home', link: "/"}, {page: 'Products', link: "/products"}];
 
 export default function Header() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -26,11 +27,11 @@ export default function Header() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
+                    {/* Display: MD */}
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#"
                         sx={{
                             flexGrow: 1,
                             mr: 2,
@@ -38,15 +39,31 @@ export default function Header() {
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
                             alignItems: 'center',
                         }}
                     >
-                        <Avatar sx={{display: {xs: 'none', md: 'flex'}}} alt="V" src="/vite.svg"/>
-                        IT
+                        <Link
+                            to={"/"}
+                            style={{display: "flex", textDecoration: "none", color: "inherit", alignItems: "center"}}
+                        >
+                            <Avatar sx={{display: {xs: 'none', md: 'flex'}}} alt="V" src="/vite.svg"/>
+                            IT
+                        </Link>
                     </Typography>
+                    <Box sx={{display: {xs: 'none', md: 'flex'}}}>
+                        {pages.map((link) => (
+                            <Link key={link.page} to={link.link} style={{color: "white", textDecoration: "none"}}>
+                                <Button
+                                    onClick={handleCloseNavMenu}
+                                    sx={{my: 2, color: 'white', display: 'block'}}
+                                >
+                                    {link.page}
+                                </Button>
+                            </Link>
+                        ))}
+                    </Box>
 
+                    {/* Display: XS */}
                     <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
                         <IconButton
                             size="large"
@@ -76,10 +93,12 @@ export default function Header() {
                                 display: {xs: 'block', md: 'none'},
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
+                            {pages.map((link) => (
+                                <Link key={link.page} to={link.link} style={{color: "black", textDecoration: "none"}}>
+                                    <MenuItem onClick={handleCloseNavMenu}>
+                                        {link.page}
+                                    </MenuItem>
+                                </Link>
                             ))}
                         </Menu>
                     </Box>
@@ -100,22 +119,17 @@ export default function Header() {
                             alignItems: 'center',
                         }}
                     >
-                        <Avatar sx={{display: {xs: 'flex', md: 'none'}}} alt="V" src="/vite.svg"/>
-                        IT
+                        <Link
+                            to={"/"}
+                            style={{display: "flex", textDecoration: "none", color: "inherit", alignItems: "center"}}
+                        >
+                            <Avatar alt="V" src="/vite.svg"/>
+                            IT
+                        </Link>
                     </Typography>
-                    <Box sx={{flexGrow: 0, display: {xs: 'none', md: 'flex'}}}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{my: 2, color: 'white', display: 'block'}}
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
 
-                    <Box sx={{ml: 5}}>
+                    {/* Display: Always */}
+                    <Box sx={{ml: {xs: 0, md: 5}}}>
                         <Avatar alt="VIT" src="/react.svg"/>
                     </Box>
                 </Toolbar>
