@@ -46,7 +46,8 @@ export default function Header() {
                             to={"/"}
                             style={{display: "flex", textDecoration: "none", color: "inherit", alignItems: "center"}}
                         >
-                            <Avatar sx={{display: {xs: 'none', md: 'flex'}}} alt="V" src="/vite.svg"/>
+                            <Avatar sx={{display: {xs: 'none', md: 'flex'}}}
+                                    style={{height: "auto", overflow: "visible"}} alt="V" src="/vite.svg"/>
                             IT
                         </Link>
                     </Typography>
@@ -123,14 +124,14 @@ export default function Header() {
                             to={"/"}
                             style={{display: "flex", textDecoration: "none", color: "inherit", alignItems: "center"}}
                         >
-                            <Avatar alt="V" src="/vite.svg"/>
+                            <Avatar alt="V" style={{height: "auto", overflow: "visible"}} src="/vite.svg"/>
                             IT
                         </Link>
                     </Typography>
 
                     {/* Display: Always */}
                     <Box sx={{ml: {xs: 0, md: 5}}}>
-                        <Avatar alt="VIT" src="/react.svg"/>
+                        <Avatar alt="VIT" style={{height: "auto", overflow: "visible"}} src="/react.svg"/>
                     </Box>
                 </Toolbar>
             </Container>
