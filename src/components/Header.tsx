@@ -31,7 +31,6 @@ export default function Header() {
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
                         sx={{
                             flexGrow: 1,
                             mr: 2,
@@ -106,8 +105,6 @@ export default function Header() {
                     <Typography
                         variant="h5"
                         noWrap
-                        component="a"
-                        href="#"
                         sx={{
                             mr: 2,
                             display: {xs: 'flex', md: 'none'},
