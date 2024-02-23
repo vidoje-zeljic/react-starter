@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 // const baseURL = "https://dummyjson.com/products";
 
 export default function Products() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<any[]>([]);
 
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts')
