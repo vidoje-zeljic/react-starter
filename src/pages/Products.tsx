@@ -1,16 +1,17 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
+import ComplexGrid from "../components/ComplexGrid";
 
-// const baseURL = "https://dummyjson.com/products";
+const baseURL = "https://dummyjson.com/products";
 
 export default function Products() {
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<any>([]);
 
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get(baseURL)
             .then(response => {
-                setData(response.data);
-                console.log("foo")
+                setData(response.data.products);
+                console.log(response.data.products)
             })
             .catch(error => {
                 console.log(error);
@@ -19,12 +20,16 @@ export default function Products() {
 
     return (
         <>
-            Products
-            <ul>
-                {data.map(item => (
-                    <li key={item.id}>{item.title}</li>
-                ))}
-            </ul>
+
+            {data.map(item => (
+                <ComplexGrid
+                    key={item.id}
+                    image={item.images[0]}
+                    name={item.title}
+                    description={item.description}
+                    price={item.price}
+                />
+            ))}
         </>
     );
 }
