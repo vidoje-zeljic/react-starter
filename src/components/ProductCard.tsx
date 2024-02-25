@@ -4,9 +4,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {CardActionArea} from '@mui/material';
 
-export default function ProductCard(
-    {image, name, description, price}:
-        { image: string, name: string, description: string, price: string }) {
+export default function ProductCard(props: { image: string, name: string, description: string, price: string }) {
     return (
         <Card sx={{
             boxShadow: 5,
@@ -18,7 +16,7 @@ export default function ProductCard(
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    image={image}
+                    image={props.image}
                     sx={{
                         height: {lg: 300, sm: 250},
                         maxHeight: {xs: 200},
@@ -28,13 +26,13 @@ export default function ProductCard(
             </CardActionArea>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {name}
+                    {props.name}
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">
-                    {price}$
+                    {props.price}$
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {description}
+                    {props.description}
                 </Typography>
             </CardContent>
         </Card>

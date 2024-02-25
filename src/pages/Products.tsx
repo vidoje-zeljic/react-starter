@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 const baseURL = "https://dummyjson.com/products";
 
 export default function Products() {
-    const [data, setData] = useState<any>([]);
+    const [data, setData] = useState<{ id: string, images: string[], title: string, description: string, price: string }[]>([]);
 
     useEffect(() => {
         axios.get(baseURL)
@@ -21,25 +21,20 @@ export default function Products() {
     }, []);
 
     return (
-        <>
-            <Container maxWidth="xl">
-                <Grid container spacing={2}>
-                    {data.map(item => (
-                        <Grid item key={item.id} lg={4} sm={6} xs={12}
-                              sx={{
-                                  width: {xs: '100%'}
-                              }}>
-                            <ProductCard
-                                key={item.id}
-                                image={item.images[0]}
-                                name={item.title}
-                                description={item.description}
-                                price={item.price}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
-        </>
+        <Container maxWidth="xl">
+            <Grid container spacing={2}>
+                {data.map(item => (
+                    <Grid item key={item.id} lg={4} sm={6} xs={12} sx={{width: {xs: '100%'}}}>
+                        <ProductCard
+                            key={item.id}
+                            image={item.images[0]}
+                            name={item.title}
+                            description={item.description}
+                            price={item.price}
+                        />
+                    </Grid>
+                ))}
+            </Grid>
+        </Container>
     );
 }
