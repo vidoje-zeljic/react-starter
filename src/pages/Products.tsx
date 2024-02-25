@@ -1,6 +1,8 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import ComplexGrid from "../components/ComplexGrid";
+import {Grid} from "@mui/material";
+import ProductCard from "../components/ProductCard";
+import Container from "@mui/material/Container";
 
 const baseURL = "https://dummyjson.com/products";
 
@@ -20,16 +22,24 @@ export default function Products() {
 
     return (
         <>
-
-            {data.map(item => (
-                <ComplexGrid
-                    key={item.id}
-                    image={item.images[0]}
-                    name={item.title}
-                    description={item.description}
-                    price={item.price}
-                />
-            ))}
+            <Container maxWidth="xl">
+                <Grid container spacing={2}>
+                    {data.map(item => (
+                        <Grid item key={item.id} lg={4} sm={6} xs={12}
+                              sx={{
+                                  width: {xs: '100%'}
+                              }}>
+                            <ProductCard
+                                key={item.id}
+                                image={item.images[0]}
+                                name={item.title}
+                                description={item.description}
+                                price={item.price}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
         </>
     );
 }
