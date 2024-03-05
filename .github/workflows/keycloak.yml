@@ -5,7 +5,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: vidoje-keycloak
+  IMAGE_NAME: vidoje-zeljic/keycloak
 
 permissions:
   contents: read
