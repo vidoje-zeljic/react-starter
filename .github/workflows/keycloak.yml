@@ -27,5 +27,5 @@ jobs:
       - name: Build and push Docker image
         run: |
           cd keycloak
-          docker build . -t ghcr.io/${{ github.repository }}:main
-          docker push ${{ env.REGISTRY }}/${{ github.repository }}:main
+          docker build . -t ghcr.io/${{ env.IMAGE_NAME }}:main
+          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:main
