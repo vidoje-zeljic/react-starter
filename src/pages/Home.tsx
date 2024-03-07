@@ -9,7 +9,7 @@ export default function Home() {
             <Button
                 variant="contained"
                 onClick={() => setCount((count) => count + 1)}>
-                count is {count}
+                {count}
             </Button>
         </>
     );
