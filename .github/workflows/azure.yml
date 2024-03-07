@@ -10,6 +10,7 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: cicd
     steps:
       - name: Azure login
         uses: azure/login@v2
