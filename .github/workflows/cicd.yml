@@ -1,4 +1,4 @@
-name: Azure
+name: CICD
 
 on:
   push:
@@ -44,6 +44,6 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-      - name: Redeploy App
+      - name: Deploy App
         run: |
-          az webapp restart --name fe-vidoje -g vidoje_group
+          az webapp create -g vidoje_group -n cli-vidoje -p Free -i ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
