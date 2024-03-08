@@ -47,3 +47,4 @@ jobs:
       - name: Deploy App
         run: |
           az webapp create -g vidoje_group -n cli-vidoje -p Free -i ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          az webapp restart -g vidoje_group -n cli-vidoje

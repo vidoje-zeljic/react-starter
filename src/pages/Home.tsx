@@ -6,7 +6,7 @@ export default function Home() {
 
     return (
         <>
-            <h1>CLI</h1>
+            <h1>HOME</h1>
             <Button
                 variant="contained"
                 onClick={() => setCount((count) => count + 1)}>
