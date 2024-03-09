@@ -9,6 +9,9 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE: ghcr.io/vidoje-zeljic/fe:main
+  AZ_GROUP: vidoje_group
+  AZ_APP_SERVICE: fe-vidoje
+  AZ_APP_SERVICE_PLAN: Free
 
 permissions:
   contents: read
@@ -45,5 +48,5 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
       - name: Deploy App
         run: |
-          az webapp create -g vidoje_group -n fe-vidoje -p Free -i ${{ env.IMAGE }}
-          az webapp restart -g vidoje_group -n fe-vidoje
+          az webapp create -g ${{ env.AZ_GROUP }} -n ${{ env.AZ_APP_SERVICE }} -p ${{ env.AZ_APP_SERVICE_PLAN }} -i ${{ env.IMAGE }}
+          az webapp restart -g ${{ env.AZ_GROUP }} -n ${{ env.AZ_APP_SERVICE }}
